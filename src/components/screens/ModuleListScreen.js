@@ -1,15 +1,22 @@
-import { StyleSheet, ScrollView, } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { useState } from 'react';
 import Screen from '../layout/Screen';
 import initialModules from '../../data/modules.js';
 import ModuleList from '../entity/modules/ModuleList.js';
+import RenderCount from '../UI/RenderCount.js';
 
 
 export default function ModuleListScreen() {
-    const modules = initialModules;
-    const handleSelect = (module) => alert(`Item ${module.ModuleCode} selected`);
+    let [modules, setModules] = useState(initialModules); //Delete only works if its let , const gives a read-only error
+    const handleDelete = (module) => {
+      setModules(modules = modules.filter((item) => item.ModuleID !== module.ModuleID));
+        
+     
+    };
   return (
    <Screen>
-        <ModuleList modules={modules} onSelect={handleSelect}/>
+    <RenderCount />
+        <ModuleList modules={modules} onSelect={handleDelete}/>
     </Screen>
   );
 }

@@ -7,7 +7,7 @@ const modules = [
     ModuleLeaderID: 1,
     ModuleLeaderName: 'Graeme Jones',
     ModuleImage:
-    'https://images.freeimages.com/images/small-previews/9b8/electronic-components-2-1242738.jpg',
+    'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 
 {
@@ -18,7 +18,7 @@ const modules = [
     ModuleLeaderID: 2,
     ModuleLeaderName: 'Graeme Jones',
     ModuleImage:
-    'https://images.freeimages.com/images/small-previews/411/light-of-technology-1510575.jpg',
+    'https://plus.unsplash.com/premium_photo-1770347185683-e32ebdc10297?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
     ModuleID: 329011,
@@ -27,7 +27,7 @@ const modules = [
     ModuleLevel: 6,
     ModuleLeaderID: 3,
     ModuleLeaderName: 'Graeme Jones',
-    ModuleImage: 'https://images.freeimages.com/images/small-previews/64b/vla-1-1315506.jpg',
+    ModuleImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
 ModuleID: 512346,
@@ -36,7 +36,7 @@ ModuleCode: 'CI8502',
 ModuleLevel: 6,
 ModuleLeaderID: 4,
 ModuleLeaderName: 'Graeme Jones',
-ModuleImage: 'https://images.freeimages.com/images/small-previews/293/cable-4-1243085.jpg',
+ModuleImage: 'https://images.unsplash.com/photo-1686061593213-98dad7c599b9?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
     ModuleID: 692345,
@@ -45,7 +45,7 @@ ModuleImage: 'https://images.freeimages.com/images/small-previews/293/cable-4-12
     ModuleLevel: 7,
     ModuleLeaderID: 5,
     ModuleLeaderName: 'Graeme Jones',
-    ModuleImage: 'https://images.freeimages.com/images/small-previews/fa1/cable-5-1243077.jpg',
+    ModuleImage: 'https://plus.unsplash.com/premium_photo-1661764393655-1dbffee8c0ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
     ModuleID: 906072,
@@ -54,7 +54,7 @@ ModuleImage: 'https://images.freeimages.com/images/small-previews/293/cable-4-12
     ModuleLevel: 7,
     ModuleLeaderID: 6,
     ModuleLeaderName: 'Graeme Jones',
-    ModuleImage: 'https://images.freeimages.com/images/small-previews/930/towertv-3-1423238.jpg',
+    ModuleImage: 'https://plus.unsplash.com/premium_photo-1661878265739-da90bc1af051?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
     ModuleID: 394428,
@@ -63,7 +63,7 @@ ModuleImage: 'https://images.freeimages.com/images/small-previews/293/cable-4-12
     ModuleLevel: 5,
     ModuleLeaderID: 7,
     ModuleLeaderName: 'Graeme Jones',
-    ModuleImage: 'https://images.freeimages.com/images/small-previews/cf5/cellphone-1313194.jpg',
+    ModuleImage: 'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 {
     ModuleID: 699951,
@@ -73,7 +73,7 @@ ModuleImage: 'https://images.freeimages.com/images/small-previews/293/cable-4-12
     ModuleLeaderID: 8,
     ModuleLeaderName: 'Graeme Jones',
     ModuleImage:
-    'https://images.freeimages.com/images/small-previews/4e8/sala-de-parto-03-1432033.jpg',
+    'https://images.unsplash.com/photo-1782926017061-6dca357718dc?q=80&w=3009&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 },
 ];
 

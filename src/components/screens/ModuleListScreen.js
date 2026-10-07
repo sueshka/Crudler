@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Screen from '../layout/Screen';
 import initialModules from '../../data/modules.js';
 import ModuleList from '../entity/modules/ModuleList.js';
-import RenderCount from '../UI/RenderCount.js';
-
+import { Button, ButtonTray } from '../UI/Button.js';
+import Icons from '../UI/Icons.js';
 
 
 export default function ModuleListScreen({navigation}) {
@@ -16,10 +16,18 @@ export default function ModuleListScreen({navigation}) {
     const onDelete = (module) =>{
       handleDelete(module);
       navigation.goBack();};
+    const handleAdd = (module) => setModules([...modules, module]);
+    const onAdd = (module) => {
+      handleAdd(module);
+      navigation.goBack();
+    }
+    const goToAddModule = () => navigation.navigate('ModuleAdd', {onAdd});
 
   return (
    <Screen>
-    <RenderCount />
+    <ButtonTray>
+      <Button label = "Add" icon={<Icons.Add/>} onClick={goToAddModule}/>
+      </ButtonTray>
         <ModuleList modules={modules} onSelect={handleSelect}/>
     </Screen>
   );

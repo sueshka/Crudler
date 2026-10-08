@@ -13,17 +13,17 @@ const defaultModule = {
   ModuleImage: null 
 };
 
-export default function ModuleForm({onSubmit, onCancel}) {
+export default function ModuleForm({origModule,onSubmit, onCancel}) {
     defaultModule.ModuleID = Math.floor(100000+ Math.random() * 900000);
     defaultModule.ModuleImage = "https://assets.codepen.io/2510825/courseImageMobileApplicationDevelopment.jpg";
 
-    const [module, setModule] = useState(defaultModule);
+    const [module, setModule] = useState(origModule || defaultModule);
 
     const handleChange = (field,value) => setModule({...module, [field]: value});
     const handleSubmit = () => onSubmit(module);
 
-    const submitLabel = 'Add';
-    const submitIcon = <Icons.Add/>;
+    const submitLabel = origModule ? 'Modify' : 'Add';
+    const submitIcon = origModule ? <Icons.Edit/> : <Icons.Add/>;
 
     const levels = [
         {value: 3, label: 'Level 3 (Foundation)'},
@@ -36,13 +36,10 @@ return (
     <Form onSubmit={handleSubmit} onCancel={onCancel} submitLabel={submitLabel} submitIcon={submitIcon}>
         <Form.InputText label="Module Code" value={module.ModuleCode} onChange={(value) => handleChange("ModuleCode", value)}/>
         <Form.InputText label="Module Name" value={module.ModuleName} onChange={(value) => handleChange("ModuleName", value)}/>
-        <Form.InputSelect label="Module Level" prompt="Select Module Level" options={levels} value={module.ModuleLevel} onChange={(value) => handleChange("ModuleLevel", value)}/>
-        <Form.InputText label="Module Leader ID" value={module.ModuleLeaderID} onChange={(value) => handleChange("ModuleLeaderID", value)}/>      
+        <Form.InputSelect label="Module Level" prompt="Select Module Level" options={levels} value={module.ModuleLevel} onChange={(value) => handleChange("ModuleLevel", value)}/>      
         <Form.InputText label="Module Leader Name" value={module.ModuleLeaderName} onChange={(value) => handleChange("ModuleLeaderName", value)}/>      
         <Form.InputText label="Module Image" value={module.ModuleImage} onChange={(value) => handleChange("ModuleImage", value)}/>      
     </Form>
-
-
 
 );
 };

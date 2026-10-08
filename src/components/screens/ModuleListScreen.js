@@ -10,7 +10,7 @@ import Icons from '../UI/Icons.js';
 export default function ModuleListScreen({navigation}) {
     LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
     let [modules, setModules] = useState(initialModules); //Delete only works if its let , const gives a read-only error
-    const handleSelect = (module) => navigation.navigate('ModuleView', {module, onDelete});
+    const handleSelect = (module) => navigation.navigate('ModuleView', {module, onDelete, onModify});
     const handleDelete = (module) => {
       setModules(modules = modules.filter((item) => item.ModuleID !== module.ModuleID));};
     const onDelete = (module) =>{
@@ -22,6 +22,17 @@ export default function ModuleListScreen({navigation}) {
       navigation.goBack();
     }
     const goToAddModule = () => navigation.navigate('ModuleAdd', {onAdd});
+
+    const handleModify = (updateModule) => setModules(
+      modules.map((module) => (module.ModuleID == updateModule.ModuleID) ? updateModule : module)
+    );
+
+    const onModify = (module) => {
+      handleModify(module);
+      // navigation.navigate('ModuleListScreen');
+      // navigation.popToTop();
+      navigation.replace('ModuleView', {module, onDelete, onModify});
+    };
 
   return (
    <Screen>

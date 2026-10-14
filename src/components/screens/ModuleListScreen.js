@@ -1,24 +1,15 @@
 import { LogBox,StyleSheet,Text } from 'react-native';
-import { useState, useEffect } from 'react';
 import Screen from '../layout/Screen';
 import ModuleList from '../entity/modules/ModuleList.js';
 import { Button, ButtonTray } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
-import API from '../API/API.js';
-
-
+import useLoad from '../API/useLoad.js';
+import { use } from 'react';
 
 export default function ModuleListScreen({navigation}) {
     LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
     const modulesEndpoint = 'https://api.unibase.kuapps.uk/api/modules';
-    let [modules, setModules] = useState([]); //Delete only works if its let , const gives a read-only error
-    const [isLoading, setisLoading] = useState(true);
-    const loadModules = async(endpoint) =>{
-      const response = await API.get(endpoint);
-      setisLoading(false);
-      if(response.isSuccess) setModules(response.result);
-    }
-    useEffect( () => {loadModules(modulesEndpoint)},[]);
+    const [modules, setModules,isLoading, loadModules] = useLoad(modulesEndpoint);
     const handleSelect = (module) => navigation.navigate('ModuleView', {module, onDelete, onModify});
     const handleDelete = (module) => {
       setModules(modules = modules.filter((item) => item.ModuleID !== module.ModuleID));};

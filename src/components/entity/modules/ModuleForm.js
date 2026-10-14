@@ -10,12 +10,12 @@ const defaultModule = {
   ModuleLevel: null,
   ModuleLeaderID: null,
   ModuleLeaderName: null,
-  ModuleImage: null 
+  ModuleImageURL: null 
 };
 
 export default function ModuleForm({origModule,onSubmit, onCancel}) {
     defaultModule.ModuleID = Math.floor(100000+ Math.random() * 900000);
-    defaultModule.ModuleImage = "https://assets.codepen.io/2510825/courseImageMobileApplicationDevelopment.jpg";
+    defaultModule.ModuleImageURL = "https://assets.codepen.io/2510825/courseImageMobileApplicationDevelopment.jpg";
 
     const [module, setModule] = useState(origModule || defaultModule);
 
@@ -38,7 +38,7 @@ return (
         <Form.InputText label="Module Name" value={module.ModuleName} onChange={(value) => handleChange("ModuleName", value)}/>
         <Form.InputSelect label="Module Level" prompt="Select Module Level" options={levels} value={module.ModuleLevel} onChange={(value) => handleChange("ModuleLevel", value)}/>      
         <Form.InputText label="Module Leader Name" value={module.ModuleLeaderName} onChange={(value) => handleChange("ModuleLeaderName", value)}/>      
-        <Form.InputText label="Module Image" value={module.ModuleImage} onChange={(value) => handleChange("ModuleImage", value)}/>      
+        <Form.InputText label="Module Image URL" value={module.ModuleImageURL} onChange={(value) => handleChange("ModuleImageURL", value)}/>      
     </Form>
 
 );

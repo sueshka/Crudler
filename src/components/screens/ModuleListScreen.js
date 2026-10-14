@@ -5,12 +5,17 @@ import { Button, ButtonTray } from '../UI/Button.js';
 import Icons from '../UI/Icons.js';
 import useLoad from '../API/useLoad.js';
 import API from '../API/API.js';
+import useStore from '../store/useStore.js';
 
 
 export default function ModuleListScreen({navigation}) {
     LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
+
+    const loggedinUserKey = 'loggedinUser';
+    
     const modulesEndpoint = 'https://api.unibase.kuapps.uk/api/modules';
-    const [modules, setModules,isLoading, loadModules] = useLoad(modulesEndpoint);
+    const [modules, ,isLoading, loadModules] = useLoad(modulesEndpoint);
+    const [loggedinUser, saveLoggedinUser] = useStore(loggedinUserKey, null);
     const handleSelect = (module) => navigation.navigate('ModuleView', {module, onDelete, onModify});
     
     const onDelete = async(module) => {
@@ -53,6 +58,8 @@ export default function ModuleListScreen({navigation}) {
 
   return (
    <Screen>
+    {loggedinUser && <Text style={styles.welcome}>Hi there {loggedinUser.UserFirstname}</Text>}
+    <View style={styles.container}>
     <ButtonTray>
       <Button label = "Add" icon={<Icons.Add/>} onClick={goToAddModule}/>
       </ButtonTray>
@@ -63,11 +70,17 @@ export default function ModuleListScreen({navigation}) {
             </View>
           )}
           <ModuleList modules={modules} onSelect={handleSelect}/>
+        </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+    welcome:{
+      marginTop:5,
+      marginBottom:5
+    },
+
     container: {
       gap:15
     },

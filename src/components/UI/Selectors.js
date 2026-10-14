@@ -8,7 +8,7 @@ const Selector = ({children, onPress, style, pressedStyle}) => {
   };
 
     return(
-        <Pressable onLongPress={handlePress} style={({ pressed }) => [style, pressed && pressedStyle]}>
+        <Pressable onPress={handlePress} style={({ pressed }) => [style, pressed && pressedStyle]}>
       {children}
     </Pressable>
     );

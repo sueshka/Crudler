@@ -35,19 +35,27 @@ export const InputText = ({label,value,onChange}) => {
     );
 };
 
-export const InputSelect = ({label,prompt,options,value,onChange}) => {
+export const InputSelect = ({label,prompt,options,value,onChange, isLoading = false}) => {
     return(
         <View>
             <Text style={styles.itemLabel}>{label}</Text>
-            <Picker
-                selectedValue={value}
-                onValueChange={onChange}
-                style={styles.itemPickerStyle}
-                itemStyle={styles.itemPickerItemStyle}
-            >
-                <Picker.Item label={prompt} value={null}/>
-                {options.map((option, index) => (<Picker.Item key = {index} value={option.value} label={option.label} />))}
-            </Picker>
+              {isLoading ? (
+                <View style={styles.itemLoading}>
+                    <Text style={styles.itemLoadingText}>Loading records ...</Text>
+                </View>
+            ) : (
+                <Picker
+                    selectedValue={value}
+                    onValueChange={onChange}
+                    style={styles.itemPickerStyle}
+                    itemStyle={styles.itemPickerItemStyle}
+                >
+                    <Picker.Item label={prompt} value={null}/>
+                    {options.map((option, index) => (
+                        <Picker.Item key={index} value={option.value} label={option.label} />
+                    ))}
+                </Picker>
+            )}
         </View>
     );
 };
@@ -89,6 +97,16 @@ const styles = StyleSheet.create({
         height: 50,
         fontSize: 16,
         color: 'black',
+    },
+    itemLoading:{
+        height:50,
+        backgroundColor:'#945b94',
+        justifyContent:'center'
+    },
+
+    itemLoadingText:{
+        fontSize:15,
+        color:'white'
     }
 });
 

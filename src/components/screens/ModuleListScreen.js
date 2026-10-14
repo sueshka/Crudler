@@ -6,16 +6,48 @@ import Icons from '../UI/Icons.js';
 import useLoad from '../API/useLoad.js';
 import API from '../API/API.js';
 import useStore from '../store/useStore.js';
+import { useEffect } from 'react';
 
 
 export default function ModuleListScreen({navigation}) {
     LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
 
     const loggedinUserKey = 'loggedinUser';
+    const favouritesKey = 'moduleFavourites';
     
     const modulesEndpoint = 'https://api.unibase.kuapps.uk/api/modules';
-    const [modules, ,isLoading, loadModules] = useLoad(modulesEndpoint);
-    const [loggedinUser, saveLoggedinUser] = useStore(loggedinUserKey, null);
+    const [modules, setModules, isLoading, loadModules] = useLoad(modulesEndpoint);
+    const [loggedinUser] = useStore(loggedinUserKey, null);
+    const [favourites, saveFavourites] = useStore(favouritesKey,[]);
+
+    const agumentModulesWithFavourites = () =>{
+      const modifyModule= (module) => ({
+        ...module, ModuleFavourite: favourites.includes(module.ModuleID),
+      })
+      const augmentedModules = modules.map(modifyModule);
+      augmentedModules.length > 0 && setModules(augmentedModules);
+    }
+
+    useEffect (() => {
+      agumentModulesWithFavourites();
+    }, [isLoading, favourites]);
+
+    const handleFavourite = (module) => {
+        // Update the module state
+        const isFavourite = !module.ModuleFavourite;
+        const updateModule = (item) =>
+          item.ModuleID === module.ModuleID ? { ...item, ModuleFavourite: isFavourite } : item;
+        const updatedModuleList = modules.map(updateModule);
+        setModules(updatedModuleList);
+
+        // save the new favourites
+        const updatedFavouritesList = updatedModuleList
+          .filter((item) => item.ModuleFavourite)
+          .map((item) => item.ModuleID);
+        saveFavourites(updatedFavouritesList);
+    };
+
+
     const handleSelect = (module) => navigation.navigate('ModuleView', {module, onDelete, onModify});
     
     const onDelete = async(module) => {
@@ -69,7 +101,7 @@ export default function ModuleListScreen({navigation}) {
               <ActivityIndicator size="large" />
             </View>
           )}
-          <ModuleList modules={modules} onSelect={handleSelect}/>
+          <ModuleList modules={modules} onSelect={handleSelect} onFav={handleFavourite}/>
         </View>
     </Screen>
   );

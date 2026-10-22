@@ -3,6 +3,7 @@ import ModuleAddScreen from './src/components/screens/ModuleAddScreen';
 import ModuleViewScreen from './src/components/screens/ModuleViewScreen';
 import ModuleModifyScreen from './src/components/screens/ModuleModifyScreen';
 import CameraScreen from './src/components/screens/CameraScreen';
+import LocationScreen from './src/components/screens/LocationScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -41,6 +42,12 @@ export default function App() {
         name="CameraScreen" 
         component={CameraScreen} 
         options={{ title: 'Capture a pic' }} 
+        />
+
+        <Stack.Screen 
+        name="LocationScreen" 
+        component={LocationScreen} 
+        options={{ title: 'Get location' }} 
         />
 
       </Stack.Navigator>

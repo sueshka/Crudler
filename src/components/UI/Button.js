@@ -26,10 +26,12 @@ export const ButtonTray = ({children}) => {
 
 const styles = StyleSheet.create({
     buttonTray:{
+        flexWrap:'wrap',
         flexDirection: 'row',
         gap: 10,
     },
     button: {
+        minWidth:100,
         minHeight: 50,
         borderWidth: 1,
         borderRadius: 5,

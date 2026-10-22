@@ -3,7 +3,7 @@ import FullWidthImage from 'react-native-fullwidth-image';
 import  {Button, ButtonTray}  from '../../UI/Button.js';
 import Icons from '../../UI/Icons.js';
 
-export const ModuleView = ({module, imageURL, onDelete, onModify, onCamera}) => {
+export const ModuleView = ({module, imageURL, onDelete, onModify, onCamera, coordinates, onLocation}) => {
   const handleDelete = () => onDelete(module);
 
   const requestDelete = () => Alert.alert(
@@ -21,12 +21,17 @@ export const ModuleView = ({module, imageURL, onDelete, onModify, onCamera}) => 
         <View style={styles.infoTray}>
           <Text style ={styles.boldText}>{module.ModuleCode} {module.ModuleName}</Text>
           <Text style ={styles.text}>Level: {module.ModuleLevel}</Text>
-          <Text style ={styles.text}>Cohort: {module.ModuleYearID}</Text>
-          <Text style ={styles.text}>{module.ModuleLeaderID} <Text style ={styles.dimText}>(Module Leader)</Text></Text>
+          <Text style ={styles.text}>Cohort: {module.ModuleYearName}</Text>
+          <Text style ={styles.text}>{module.ModuleLeaderName} <Text style ={styles.dimText}>(Module Leader)</Text></Text>
+          {coordinates && (
+          <Text style ={styles.text}>
+            Location: {coordinates.latitude.toFixed(6)}, {coordinates.longitude.toFixed(6)}{' '}
+          </Text>)}
 
           <ButtonTray>
           <Button icon= {<Icons.Edit/>} label= 'Modify' onClick={onModify}/>
            <Button icon= {<Icons.Camera/>} label= 'Camera' onClick={onCamera}/>
+           <Button icon= {<Icons.Location/>} label= 'Location' onClick={onLocation}/>
           <Button icon= {<Icons.Delete/>} label= 'Delete' styleButton={{backgroundColor: '#c34747'}} styleLabel={{color: '#4d0e0e'}} onClick={requestDelete}/>
           </ButtonTray>
           </View>

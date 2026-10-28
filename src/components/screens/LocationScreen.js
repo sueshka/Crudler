@@ -1,20 +1,14 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { getCurrentPositionAsync, useForegroundPermissions } from 'expo-location';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import Screen from '../layout/Screen';
 import { Button, ButtonTray } from '../UI/Button';
 import Icons from '../UI/Icons';
+import useLocation from '../location/useLocation';
+
 
 const LocationScreen = ({ navigation, route }) => {
 
-  const [permission, requestPermission] = useForegroundPermissions();
-  const [location, setLocation] = useState(null);
-
-  const getLocation = async () => {
-    const location = await getCurrentPositionAsync();
-    setLocation(location);
-  };
-
+  const [permission, requestPermission, location, isLocating, getLocation] = useLocation();
+  
   const {onLocate} = route.params;
   const handleLocate = () => {
     onLocate(location.coords);
@@ -35,6 +29,7 @@ const LocationScreen = ({ navigation, route }) => {
         <View style={styles.permission}>
           <Text>Permission is required to access your location.</Text>
           <ButtonTray>
+            {isLocating && <ActivityIndicator size="large" />}
             <Button label='Grant permission' onClick={requestPermission} />
           </ButtonTray>
         </View>

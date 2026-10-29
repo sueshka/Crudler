@@ -23,13 +23,22 @@ const LocationScreen = ({ navigation, route }) => {
     );
   }
 
-  if (!permission.granted) {
+  if (isLocating) {
+    return (
+      <Screen>
+        <View style={styles.permission}>
+          <ActivityIndicator size="large" />
+        </View>
+      </Screen>
+    );
+  }
+
+   if (!permission.granted) {
     return (
       <Screen>
         <View style={styles.permission}>
           <Text>Permission is required to access your location.</Text>
           <ButtonTray>
-            {isLocating && <ActivityIndicator size="large" />}
             <Button label='Grant permission' onClick={requestPermission} />
           </ButtonTray>
         </View>
